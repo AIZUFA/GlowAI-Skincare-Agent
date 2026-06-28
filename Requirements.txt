@@ -1,6 +1,0 @@
-google-adk
-google-genai
-anthropic
-pillow
-requests
-python-dotenv
