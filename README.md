@@ -1,132 +1,144 @@
-# GlowAI 🌸✨
-### Your Personal AI Skincare Agent — Powered by Google ADK & Gemini
+# ✨ GlowAI — Multimodal AI Beauty Agent
 
 > *"Because your skin deserves intelligent care."*
+
+🚀 **[Live Demo → huggingface.co/spaces/jungkookswife/glowAI](https://huggingface.co/spaces/jungkookswife/glowAI)**
 
 ---
 
 ## 🌟 The Problem
 
-The global skincare industry is worth over $500 billion — yet most people are completely overwhelmed by it. With thousands of products, conflicting advice, and ingredient lists that read like chemistry textbooks, finding the right routine feels impossible.
+The global skincare industry is worth over $500 billion — yet most people are completely overwhelmed by it. Thousands of products, conflicting advice, and ingredient lists that read like chemistry textbooks make finding the right routine feel impossible.
 
-People with acne buy the wrong products. People with sensitive skin unknowingly use irritating ingredients. Dark spots get worse because of the wrong SPF. The information exists — but it's fragmented, confusing, and not personalized.
-
-**GlowAI solves this.**
+**GlowAI solves this** with an intelligent, multimodal AI beauty agent that sees, thinks, and responds like a luxury beauty consultant.
 
 ---
 
-## ✨ The Solution
+## ✨ What GlowAI Does
 
-GlowAI is a multi-agent AI skincare assistant that acts as your personal dermatology-informed guide. It doesn't just answer questions — it reasons, uses tools, remembers you, and builds a complete skincare strategy tailored to your unique skin profile.
+| Tab | Capability |
+|-----|-----------|
+| 🧴 **Skincare** | Text-based skin analysis, ingredient decoding, routine building, L'Oréal recommendations |
+| 💄 **Makeup** | Face photo analysis, look tutorials, L'Oréal Group product matching |
 
-**What GlowAI can do:**
-- 🔍 Analyze your skin type and concerns
-- 🧴 Check any skincare ingredient for safety and effectiveness
-- 📋 Generate a complete personalized morning + night routine
-- 🧠 Remember your skin profile across sessions
-- 🔐 Handle your data securely
+---
+
+## 🔧 6 Specialized Agent Tools
+
+| # | Tool | Description |
+|---|------|-------------|
+| 1 | `analyze_skin` | Text-based skin profile assessment |
+| 2 | `analyze_skin_image` | Gemini Vision skin photo analysis |
+| 3 | `check_ingredient` | Ingredient safety & efficacy decoder |
+| 4 | `generate_routine` | Personalized AM/PM routine builder |
+| 5 | `suggest_loreal_skincare` | L'Oréal Paris product matching |
+| 6 | `analyze_makeup_look` | Image/text makeup tutorial generator |
 
 ---
 
 ## 🏗️ Architecture
-User Input
-│
-▼
-┌─────────────────────────────────┐
-│ GlowAI Orchestrator │
-│ (Google ADK Agent) │
-│ Model: Gemini 2.5 Flash │
-└─────────────────────────────────┘
-│ │ │
-▼ ▼ ▼
-┌─────────┐ ┌─────────┐ ┌──────────────┐
-│ Skin │ │Ingredient│ │ Routine │
-│Analyzer │ │ Checker │ │ Generator │
-│ Tool │ │ Tool │ │ Tool │
-└─────────┘ └─────────┘ └──────────────┘
-│ │ │
-└───────────┴────────────┘
-│
-▼
-Personalized Skincare Response
-+ Memory stored for next session
+
+```
+User Input (Text or Image)
+         │
+         ▼
+┌─────────────────────────────────────┐
+│         GlowAI Orchestrator         │
+│        (Google ADK 2.0 Agent)       │
+│       Model: Gemini 2.5 Flash       │
+└─────────────────────────────────────┘
+     │        │        │        │
+     ▼        ▼        ▼        ▼
+┌────────┐ ┌──────┐ ┌───────┐ ┌────────┐
+│  Skin  │ │Ingre-│ │Routine│ │Makeup  │
+│Analyzer│ │dient │ │Builder│ │Analyst │
+│+ Vision│ │Check │ │+Loreal│ │+ Vision│
+└────────┘ └──────┘ └───────┘ └────────┘
+                    │
+                    ▼
+      Personalized Beauty Response
+```
+
 ---
 
 ## 🧠 Key Concepts Demonstrated
 
-| Concept | Where |
-|---|---|
-| Agent / Multi-agent system (ADK) | Core GlowAI orchestrator with 3 specialized tools |
-| Agent Skills | analyze_skin, check_ingredient, generate_routine |
-| Security Features | API key protection via environment variables, input validation |
-| Memory | InMemorySessionService for persistent user skin profiles |
+| Concept | Implementation |
+|---------|---------------|
+| **Agentic AI (Google ADK)** | GlowAI orchestrator reasons and selects tools intelligently |
+| **Agent Skills (6 Tools)** | analyze_skin, analyze_skin_image, check_ingredient, generate_routine, suggest_loreal_skincare, analyze_makeup_look |
+| **Multimodal AI** | Gemini Vision for skin photo and makeup look analysis |
+| **Memory** | InMemorySessionService for session context |
+| **Security** | API keys via environment variables, never hardcoded |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Google ADK 2.0** — Agent framework
-- **Gemini 2.5 Flash** — Underlying LLM
-- **Python 3.12** — Core language
-- **Google Colab** — Development environment
-- **Google Generative AI SDK** — API integration
+| Layer | Technology |
+|-------|-----------|
+| AI Agent Framework | Google ADK 2.0 |
+| Language Model | Gemini 2.5 Flash |
+| Vision | Gemini Multimodal |
+| UI | Gradio 4.x + Custom Luxury CSS |
+| Deployment | HuggingFace Spaces |
+| Language | Python 3.12 |
 
 ---
 
-## 🚀 Setup Instructions
+## 🚀 Run Locally
 
-### 1. Clone the repository
 ```bash
 git clone https://github.com/AIZUFA/GlowAI-Skincare-Agent.git
 cd GlowAI-Skincare-Agent
+pip install -r requirements.txt
+
+# Create .env file
+echo "GOOGLE_API_KEY=your_key_here" > .env
+
+python app.py
+# Open http://localhost:7860
 ```
 
-### 2. Install dependencies
-```bash
-pip install google-adk google-genai anthropic pillow requests python-dotenv
+Get your free API key at [aistudio.google.com](https://aistudio.google.com/app/apikey)
+
+---
+
+## 📁 Project Structure
+
 ```
-
-### 3. Set up API keys
-Create a `.env` file:
-GOOGLE_API_KEY=your_google_api_key_here
-Or in Google Colab, add to Secrets:
-- `GOOGLE_API_KEY`
-
-### 4. Run the notebook
-Open `GlowAI.ipynb` in Google Colab and run all cells!
+GlowAI-Skincare-Agent/
+├── app.py              # Main app — 6 tools + Gradio UI
+├── requirements.txt    # Dependencies
+├── Procfile            # Deployment config
+├── railway.toml        # Railway config
+└── README.md
+```
 
 ---
 
 ## 💡 Why I Built This
 
-I'm Aiza Fatima, a Robotics & Intelligent Systems student at Bahria University, Pakistan. I participated in **L'Oréal Brandstorm 2026**, where I developed the Affective Fragrance Synthesis framework — merging AI with beauty and sensory experiences.
+I'm **Aiza Fatima**, a Robotics & Intelligent Systems student at Bahria University, Pakistan.
 
-That experience showed me how powerful the intersection of AI and beauty can be. GlowAI is the next step — taking that passion and building something that genuinely helps people navigate the overwhelming world of skincare.
+Earlier in 2026, I participated in **L'Oréal Brandstorm 2026** — a global innovation competition where I developed the *Affective Fragrance Synthesis* framework, an AI system that detects emotions through ocular biometrics to personalize fragrance experiences.
 
-Built during the **Google x Kaggle 5-Day Agentic AI Intensive 2026** 🚀
+That experience revealed something powerful: **AI and beauty are not separate worlds.**
 
----
+GlowAI is the natural next step — taking that intersection further by building an agent that doesn't just recommend products, but truly understands skin, sees it through computer vision, and personalizes every recommendation.
 
-## 📁 Project Structure
-GlowAI-Skincare-Agent/
-│
-├── GlowAI.ipynb # Main Colab notebook
-├── README.md # This file
-├── requirements.txt # Dependencies
-└── assets/
-└── architecture.png # Architecture diagram
 ---
 
 ## 🎯 Track
 
-**Freestyle** — Beauty AI at the intersection of dermatology, personalization, and intelligent agent systems.
+**Freestyle** — Beauty AI at the intersection of dermatology, personalization, multimodal vision, and intelligent agent systems.
 
 ---
 
 ## 👩‍💻 Built By
 
 **Aiza Fatima**
-- 🎓 BS Robotics & Intelligent Systems, Bahria University
+- 🎓 BS Robotics & Intelligent Systems, Bahria University Islamabad
 - 🌸 L'Oréal Brandstorm 2026 Participant
 - 🤖 GSoC 2026 Open Source Contributor
 - 🔗 [LinkedIn](https://www.linkedin.com/in/aiza-fatima60/)
@@ -135,4 +147,4 @@ GlowAI-Skincare-Agent/
 
 ---
 
-*Built with 💗 and AI for the Google x Kaggle Agentic AI Intensive Capstone 2026*
+*Built with 💗 for the Google × Kaggle 5-Day Agentic AI Intensive Capstone 2026*
