@@ -27,7 +27,7 @@ client = genai.Client(api_key=GOOGLE_API_KEY)
 def analyze_skin(skin_type: str, concerns: str) -> str:
     """Analyzes skin type and concerns to provide personalized advice."""
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=f"As GlowAI skincare expert, analyze {skin_type} skin with concerns: {concerns}. Give ingredient recommendations and routine structure."
     )
     return response.text
@@ -42,7 +42,7 @@ def analyze_skin_image(image_path: str) -> str:
         mime_map = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp"}
         mime_type = mime_map.get(ext, "image/jpeg")
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[{
                 "parts": [
                     {"inline_data": {"mime_type": mime_type, "data": image_data}},
@@ -65,7 +65,7 @@ Be warm, professional and specific to what you see."""}
 def check_ingredient(ingredient: str) -> str:
     """Checks if a skincare ingredient is safe and effective."""
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=f"As GlowAI, analyze the skincare ingredient '{ingredient}'. Is it safe? What does it do? Who should use/avoid it?"
     )
     return response.text
@@ -73,7 +73,7 @@ def check_ingredient(ingredient: str) -> str:
 def generate_routine(skin_type: str, concerns: str, budget: str) -> str:
     """Generates a complete personalized skincare routine."""
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=f"As GlowAI, create a complete {budget} budget skincare routine for {skin_type} skin with {concerns}. Include morning and night steps."
     )
     return response.text
@@ -81,7 +81,7 @@ def generate_routine(skin_type: str, concerns: str, budget: str) -> str:
 def suggest_loreal_skincare(skin_type: str, concerns: str) -> str:
     """Suggests specific L'Oréal Group skincare products."""
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=f"""As GlowAI, recommend SPECIFIC L'Oréal Group products for {skin_type} skin with {concerns}.
 Include products from: L'Oréal Paris, La Roche-Posay, Kiehl's, Lancôme, CeraVe, Vichy.
 For each: product name, price range, key ingredients, why it's perfect, how to use."""
@@ -97,7 +97,7 @@ def analyze_makeup_look(image_path: str) -> str:
         mime_map = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp"}
         mime_type = mime_map.get(ext, "image/jpeg")
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[{
                 "parts": [
                     {"inline_data": {"mime_type": mime_type, "data": image_data}},
@@ -120,7 +120,7 @@ Be warm and make them feel beautiful! ✨"""}
 
 glow_agent = Agent(
     name="GlowAI",
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     description="Your personal AI Beauty Agent — skincare analysis, makeup looks, and L'Oréal product recommendations.",
     instruction="""You are GlowAI, a warm, knowledgeable and glamorous AI Beauty Assistant.
 
@@ -510,7 +510,7 @@ with gr.Blocks(css=css, title="GlowAI ✨") as demo:
         <p class="glow-subtitle">✦ Personal AI Beauty Agent ✦</p>
         <p class="glow-tagline">Because your skin deserves intelligent care ✨</p>
         <div class="divider"></div>
-        <p class="glow-powered">Powered by Google ADK · Gemini 2.0 Flash · L'Oréal Group · Built by Aiza Fatima</p>
+        <p class="glow-powered">Powered by Google ADK · Gemini 2.5 Flash · L'Oréal Group · Built by Aiza Fatima</p>
     </div>
     """)
 
